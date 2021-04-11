@@ -4,14 +4,14 @@ package spring.restapi.files.model;
  * Class data model class corresponds to entity and table universities.
  */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "universities")
-public class Universities {
+@Table(name = "university")
+public class University {
+    @Id @GeneratedValue
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "state")
     private String state;
@@ -19,14 +19,35 @@ public class Universities {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "institutionType")
+    @Column(name = "institution_type")
     private String institutionType;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "website")
     private String website;
+
+    public University(){
+
+    }
+
+    public University(String state, String name, String institutionType, String phoneNumber, String website){
+        this.state = state;
+        this.name = name;
+        this.institutionType = institutionType;
+        this.phoneNumber = phoneNumber;
+        this.website = website;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getState() {
         return state;
@@ -68,22 +89,11 @@ public class Universities {
         website = website;
     }
 
-    public Universities(){
-
-    }
-
-    public Universities(String state, String name, String institutionType, String phoneNumber, String website){
-        this.state = state;
-        this.name = name;
-        this.institutionType = institutionType;
-        this.phoneNumber = phoneNumber;
-        this.website = website;
-    }
-
     @Override
     public String toString() {
-        return "Universities{" +
-                "state='" + state + '\'' +
+        return "University{" +
+                "id=" + id +
+                ", state='" + state + '\'' +
                 ", name='" + name + '\'' +
                 ", institutionType='" + institutionType + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
